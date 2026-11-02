@@ -1,0 +1,93 @@
+question_id,question,prompt_version,model_name,start_time_utc,end_time_utc,latency_seconds,response_status,finish_reason,input_tokens,output_tokens,thinking_tokens,total_tokens,response_text,error_type
+Q1,What is the difference between supervised and unsupervised learning?,v1,gemini-3.5-flash-lite,2026-11-01T20:23:13.071014+00:00,2026-11-01T20:23:15.443744+00:00,2.3728,success,MAX_TOKENS,21,346,0,367,"The main difference between supervised and unsupervised learning lies in the **data they use** and **what the computer is trying to achieve**. 
+
+Here is a clear breakdown of the two:
+
+### 1. Supervised Learning
+* **The Concept:** The model is trained on **labeled data**. This means every input data point comes with the correct answer (the ""label""). 
+* **The Analogy:** It is like learning with a teacher. The teacher gives you math problems along with the answer key so you can check your work and learn the patterns.
+* **The Goal:** To learn a rule that maps inputs to the correct outputs so that the model can predict the answer for *new*, unseen data.
+* **Common Tasks:** 
+  * *Classification* (predicting a category, e.g., Is this email ""Spam"" or ""Not Spam""?).
+  * *Regression* (predicting a continuous number, e.g., What will the price of a house be?).
+* **Common Algorithms:** Linear Regression, Logistic Regression, Support Vector Machines (SVM), Random Forests.
+
+---
+
+### 2. Unsupervised Learning
+* **The Concept:** The model is trained on **unlabeled data**. The data has no answers or correct outputs provided. 
+* **The Analogy:** It is like exploring a new topic on your own. You are given a box of mixed items with no instructions, and you have to figure out how to group them or make sense of them by yourself.
+* **The Goal:** To discover hidden patterns, similarities, or structures within the data without human guidance.
+* **Common Tasks:** 
+  *",
+Q2,Explain overfitting in machine learning and one way to reduce it.,v1,gemini-3.5-flash-lite,2026-11-01T20:23:15.470704+00:00,2026-11-01T20:23:16.773898+00:00,1.3032,success,STOP,23,182,0,205,"**Overfitting** occurs when a machine learning model learns the training data *too well*, capturing not just the underlying patterns, but also the random noise and specific details of that exact dataset. 
+
+As a result, the model performs exceptionally well on the data it was trained on, but fails to generalize to new, unseen data. It is essentially ""memorizing"" the answers rather than learning the concepts.
+
+### One Way to Reduce Overfitting: **Regularization**
+
+A common and effective way to reduce overfitting is through **regularization** (specifically, techniques like L1 or L2 regularization). 
+
+Regularization works by adding a ""penalty"" to the model's loss function for overly complex models (usually by penalizing large weights). This forces the model to find a simpler solution, preventing it from assigning too much importance to any single feature and helping it generalize better to new data.",
+Q3,"What is gradient descent, and why is it used to train neural networks?",v1,gemini-3.5-flash-lite,2026-11-01T20:23:16.792117+00:00,2026-11-01T20:23:18.805403+00:00,2.0133,success,MAX_TOKENS,26,346,0,372,"Here is a clear explanation of gradient descent and its role in training neural networks.
+
+---
+
+### **What is Gradient Descent?**
+
+**Gradient descent** is an iterative optimization algorithm used to find the minimum of a function. 
+
+Imagine you are standing blindfolded on a hilly landscape, and your goal is to reach the very bottom of the valley. To do this, you would:
+1. Feel the ground around you to figure out which direction is steepest downwards.
+2. Take a step in that direction.
+3. Repeat the process until you can't go down any further (you’ve reached the bottom).
+
+In mathematics:
+* **The ""hilly landscape""** is the **Loss Function** (or cost function), which measures how wrong the neural network's predictions are.
+* **The ""bottom of the valley""** represents the lowest possible error, meaning the model is making the best possible predictions.
+* **The ""slope""** is the **gradient**—a mathematical term that tells us the direction and rate of the steepest increase. Because we want to *decrease* the error, we go in the *opposite* direction of the gradient.
+* **The ""step size""** is called the **learning rate**, which dictates how big of a step we take on each iteration.
+
+---
+
+### **Why is it used to train Neural Networks?**
+
+A neural network starts out making terrible predictions because its internal parameters (called **weights** and **biases**) are initialized with random numbers. Training a neural network is simply the process of tweaking these millions of weights so that the network makes accurate predictions. 
+
+Here is why gradient descent",
+Q4,What is the difference between precision and recall in classification?,v1,gemini-3.5-flash-lite,2026-11-01T20:23:18.811391+00:00,2026-11-01T20:23:20.733562+00:00,1.9222,success,MAX_TOKENS,22,346,0,368,"In classification machine learning models, **precision** and **recall** are two essential metrics used to evaluate how well a model performs, especially when dealing with imbalanced datasets. 
+
+The easiest way to understand the difference is through their formulas and what kind of errors they try to minimize.
+
+---
+
+### 1. Precision (Quality over Quantity)
+* **Definition:** Out of all the things the model **predicted** as positive, how many were **actually** positive?
+* **Formula:** $\text{Precision} = \frac{\text{True Positives (TP)}}{\text{True Positives (TP)} + \text{False Positives (FP)}}$
+* **Key Focus:** Minimizing **False Positives** (Type I errors)—cases where the model incorrectly says ""yes"" when it should be ""no.""
+* **Example:** Imagine a spam email filter. If precision is high, it means almost every email the filter sends to the spam folder is actually spam. There are very few legitimate (ham) emails accidentally caught in the filter.
+
+### 2. Recall / Sensitivity (Quantity over Quality)
+* **Definition:** Out of all the things that were **actually** positive in the dataset, how many did the model manage to **find**?
+* **Formula:** $\text{Recall} = \frac{\text{True Positives (TP)}}{\text{True Positives (TP)} + \text{False Negatives (FN)}}$
+* **Key Focus:** Minimizing **False Negatives** (Type II errors)—cases where the model incorrectly says ""no"" when it should be ""yes.""
+* **Example:** Using the same spam",
+Q5,"What is retrieval-augmented generation (RAG), and why is it useful?",v1,gemini-3.5-flash-lite,2026-11-01T20:23:20.756099+00:00,2026-11-01T20:23:22.694512+00:00,1.9384,success,MAX_TOKENS,27,346,0,373,"### What is Retrieval-Augmented Generation (RAG)?
+
+**Retrieval-Augmented Generation (RAG)** is an AI technique that combines an **Information Retrieval** system with a **Generative AI** model (like a Large Language Model, or LLM). 
+
+To understand how it works, imagine taking an open-book exam:
+1. **Standard LLM (Closed-Book):** The AI relies entirely on the knowledge it memorized during its initial training. If you ask it about a company's internal policy written yesterday, it won't know the answer.
+2. **RAG (Open-Book):** When you ask a question, the system first **searches** an external database or document repository for relevant information (the retrieval step). It then **feeds** those documents along with your prompt to the LLM, which **generates** an accurate, context-aware answer based on that specific information (the augmentation and generation steps).
+
+---
+
+### Why is RAG Useful?
+
+RAG solves several major limitations of standard AI models. It is useful for the following key reasons:
+
+#### 1. It Reduces ""Hallucinations""
+Standard LLMs are designed to predict the next likely word, which means they can sometimes make up false information (hallucinate) when they don't know the answer. By grounding the AI in verified, retrieved documents, RAG ensures the model bases its answers on facts rather than imagination.
+
+#### 2. Access to Private or Real-Time Data
+LLMs have a fixed ""knowledge cutoff"" based on when they were trained, and they generally do not have access to private data (like a",

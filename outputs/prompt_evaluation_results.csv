@@ -1,0 +1,263 @@
+question_id,question,prompt_version,model_name,start_time_utc,end_time_utc,latency_seconds,response_status,finish_reason,input_tokens,output_tokens,thinking_tokens,total_tokens,response_text,error_type,max_output_tokens,prompt_registry_uri,valid_json,schema_valid,billable_output_tokens,input_cost_usd,output_cost_usd,cost_per_request_usd,pricing_date,currency,json_error
+Q1,What is the difference between supervised and unsupervised learning?,v1,gemini-3.5-flash-lite,2026-11-01T20:35:28.871114+00:00,2026-11-01T20:35:31.567067+00:00,2.696,success,STOP,21,556,0,577,"The main difference between supervised and unsupervised learning lies in the **data used to train the models and whether or not that data includes ""answers.""**
+
+Here is a clear breakdown of both:
+
+### 1. Supervised Learning
+* **The Concept:** The model is trained on **labeled data**. This means every input data point is paired with the correct output (the ""right answer""). 
+* **The Analogy:** It is like learning with a teacher. The teacher gives you math problems along with the answer key so you can learn how to solve them correctly.
+* **Goal:** To learn a rule that maps inputs to outputs so the model can predict outcomes for new, unseen data.
+* **Common Tasks:** 
+  * *Classification:* Predicting a category (e.g., Is this email ""Spam"" or ""Not Spam""?).
+  * *Regression:* Predicting a continuous numerical value (e.g., What will the price of this house be?).
+* **Common Algorithms:** Linear Regression, Logistic Regression, Support Vector Machines (SVM), Random Forests.
+
+### 2. Unsupervised Learning
+* **The Concept:** The model is trained on **unlabeled data**. The algorithm is given data without any instructions or correct answers and must figure out the structure, patterns, or relationships on its own.
+* **The Analogy:** It is like learning on your own without a teacher. Imagine sorting a massive pile of random objects into groups without knowing what the objects are beforehand; you might group them by color, shape, or size.
+* **Goal:** To discover hidden patterns, similarities, or structures within the data.
+* **Common Tasks:**
+  * *Clustering:* Grouping similar data points together (e.g., Customer segmentation for marketing).
+  * *Association:* Finding rules that describe large portions of data (e.g., ""People who buy diapers also tend to buy baby wipes"").
+  * *Dimensionality Reduction:* Simplifying data without losing important information (e.g., Data compression).
+* **Common Algorithms:** K-Means Clustering, Principal Component Analysis (PCA), Hierarchical Clustering.
+
+---
+
+### Summary Table
+
+| Feature | Supervised Learning | Unsupervised Learning |
+| :--- | :--- | :--- |
+| **Data Type** | Labeled data (Input + Output) | Unlabeled data (Input only) |
+| **Teacher/Guidance** | Yes (has a ""correct answer"") | No (algorithm explores freely) |
+| **Primary Goal** | Prediction and classification | Finding patterns and grouping |
+| **Complexity** | Generally easier to measure accuracy | Harder to evaluate ""correctness"" |",,2048,prompts:/eduassist_academic_qa/1,False,False,556,6.3e-06,0.00139,0.0013963,2026-11-02,USD,
+Q2,Explain overfitting in machine learning and one way to reduce it.,v1,gemini-3.5-flash-lite,2026-11-01T20:23:15.470704+00:00,2026-11-01T20:23:16.773898+00:00,1.3032,success,STOP,23,182,0,205,"**Overfitting** occurs when a machine learning model learns the training data *too well*, capturing not just the underlying patterns, but also the random noise and specific details of that exact dataset. 
+
+As a result, the model performs exceptionally well on the data it was trained on, but fails to generalize to new, unseen data. It is essentially ""memorizing"" the answers rather than learning the concepts.
+
+### One Way to Reduce Overfitting: **Regularization**
+
+A common and effective way to reduce overfitting is through **regularization** (specifically, techniques like L1 or L2 regularization). 
+
+Regularization works by adding a ""penalty"" to the model's loss function for overly complex models (usually by penalizing large weights). This forces the model to find a simpler solution, preventing it from assigning too much importance to any single feature and helping it generalize better to new data.",,350,prompts:/eduassist_academic_qa/1,False,False,182,6.899999999999999e-06,0.000455,0.0004619,2026-11-02,USD,
+Q3,"What is gradient descent, and why is it used to train neural networks?",v1,gemini-3.5-flash-lite,2026-11-01T20:35:31.586337+00:00,2026-11-01T20:35:34.760893+00:00,3.1746,success,STOP,26,623,0,649,"Here is a clear explanation of gradient descent and its role in training neural networks.
+
+---
+
+### **What is Gradient Descent?**
+
+**Gradient descent** is an iterative optimization algorithm used to find the minimum of a function. 
+
+To understand it intuitively, imagine you are standing blindfolded on a hilly landscape (representing the function) and your goal is to walk down to the lowest point in the valley (the minimum). To do this, you would:
+1. Feel the ground around you to figure out which direction is steepest downwards.
+2. Take a step in that direction.
+3. Repeat the process until you can't go down any further—meaning you have reached the bottom.
+
+In mathematics:
+* **Gradient:** A vector that points in the direction of the steepest *increase* of a function. Therefore, the **negative gradient** points in the direction of the steepest *decrease*.
+* **Descent:** Taking steps in that negative direction to lower the value.
+* **Learning Rate:** A tuning parameter that determines the size of the steps you take. If the step is too big, you might overshoot the bottom; if it's too small, it will take forever to get there.
+
+---
+
+### **Why is it used to train neural networks?**
+
+Training a neural network is essentially a giant trial-and-error process aimed at making accurate predictions (e.g., recognizing whether a photo contains a cat or a dog). Gradient descent is the engine that drives this learning process through three main steps:
+
+#### 1. Measuring Error (The Loss Function)
+When a neural network makes a guess, we compare its prediction to the correct answer using a **loss function**. The loss function calculates a score representing *how wrong* the network is. High loss = very wrong; low loss = very accurate. 
+
+#### 2. Mapping the Landscape
+The neural network consists of millions of adjustable numbers called **weights and biases**. The loss function depends entirely on these weights. You can think of the loss function as a massive, multi-dimensional landscape where the ""height"" is the error, and the ""coordinates"" are the values of all the weights. 
+
+#### 3. Minimizing the Error
+Our ultimate goal is to find the exact combination of weights that results in the lowest possible error (the bottom of the valley). Because calculating this mathematically all at once is impossible for complex networks, **gradient descent is used to adjust the weights step-by-step**:
+* It calculates the gradient (slope) of the error with respect to the weights (using a technique called *backpropagation*).
+* It tweaks the weights slightly in the opposite direction of the slope to reduce the error.
+* It repeats this millions of times until the network's predictions become accurate.
+
+### **Summary**
+Without gradient descent, a neural network would just be guessing randomly. **Gradient descent gives the network a way to learn from its mistakes**, systematically adjusting itself until its error is as close to zero as possible.",,2048,prompts:/eduassist_academic_qa/1,False,False,623,7.8e-06,0.0015575,0.0015653000000000002,2026-11-02,USD,
+Q4,What is the difference between precision and recall in classification?,v1,gemini-3.5-flash-lite,2026-11-01T20:35:34.765159+00:00,2026-11-01T20:35:37.446584+00:00,2.6815,success,STOP,22,661,0,683,"In classification machine learning models, **precision** and **recall** are two essential metrics used to evaluate performance, especially when accuracy alone is misleading (like in imbalanced datasets). 
+
+The easiest way to understand the difference is to look at what they measure:
+
+*   **Precision** is about **quality**: *""Out of all the things the model predicted as positive, how many were actually positive?""*
+*   **Recall** is about **quantity**: *""Out of all the actual positive things in the dataset, how many did the model manage to find?""*
+
+---
+
+### The Formulas (using confusion matrix terms)
+*   **True Positives (TP):** Correctly predicted positive cases.
+*   **False Positives (FP):** Incorrectly predicted positive cases (Type I error / False Alarm).
+*   **False Negatives (FN):** Missed positive cases (Type II error / Missed Detection).
+
+$$\text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}$$
+
+$$\text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}$$
+
+---
+
+### A Real-World Example: Email Spam Filter
+Imagine you are building a filter to catch spam emails. 
+*   **Positive** = Spam
+*   **Negative** = Important (Not Spam)
+
+*   **High Precision:** Out of all the emails the filter put in the ""Spam"" folder, 99% of them actually were spam. This means **very few important emails were accidentally sent to the spam folder** (low False Positives). However, the filter might have let some spam slip into your main inbox.
+*   **High Recall:** Out of all the spam emails that hit your inbox, the filter caught 99% of them. This means **almost no spam reached you** (low False Negatives). However, to be this aggressive, the filter might have accidentally thrown some important work emails into the spam folder.
+
+---
+
+### The Trade-Off
+Usually, there is a **trade-off** between precision and recall:
+*   If you make your model extremely strict, it will only predict ""positive"" when it is 100% sure. This **increases precision**, but it will miss many positive cases, **decreasing recall**.
+*   If you make your model very loose, it will label almost everything as ""positive"" so it never misses a true case. This **increases recall** to 100%, but it will throw in a lot of false alarms, **decreasing precision**.
+
+Depending on your problem, you prioritize one over the other:
+*   **Prioritize Precision** when a **False Positive is very costly**. (e.g., Criminal justice: better to let a guilty person go free than jail an innocent person; or financial fraud detection: you don't want to falsely block a customer's credit card).
+*   **Prioritize Recall** when a **False Negative is very costly**. (e.g., Medical diagnosis: you cannot afford to miss a cancer diagnosis; or airport security: you cannot afford to miss a weapon).",,2048,prompts:/eduassist_academic_qa/1,False,False,661,6.5999999999999995e-06,0.0016525,0.0016591000000000002,2026-11-02,USD,
+Q5,"What is retrieval-augmented generation (RAG), and why is it useful?",v1,gemini-3.5-flash-lite,2026-11-01T20:35:37.453244+00:00,2026-11-01T20:35:39.766736+00:00,2.3135,success,STOP,27,476,0,503,"### **What is Retrieval-Augmented Generation (RAG)?**
+
+**Retrieval-Augmented Generation (RAG)** is an AI technique that combines the power of Large Language Models (LLMs) with an external knowledge base. 
+
+Think of it like an open-book exam for an AI:
+1. **Retrieval:** When you ask a question, the system first searches a specific database, document collection, or the internet to find the most relevant pieces of information.
+2. **Augmentation:** It then takes your original question and combines it with the retrieved facts to create a super-charged prompt.
+3. **Generation:** Finally, the LLM reads this custom prompt and generates an accurate, context-aware answer based *specifically* on that retrieved information.
+
+---
+
+### **Why is RAG useful?**
+
+LLMs are powerful, but they have major limitations that RAG directly solves:
+
+1. **Eliminates ""Hallucinations"" (Made-up Facts):** 
+   Standard LLMs guess the next best word based on their training data. If they don't know something, they often make up convincing lies. RAG forces the AI to base its answers on real, verifiable documents.
+
+2. **Provides Access to Private or Up-to-Date Data:** 
+   An LLM’s training data has a cutoff date, and it doesn't know about your personal notes, company policies, or yesterday's news. RAG allows you to connect an LLM to live databases, internal company wikis, or PDFs without having to retrain the expensive model.
+
+3. **Cites Its Sources:** 
+   Because the AI retrieves information from specific documents, a RAG system can point you directly to the source (e.g., *""According to page 4 of the employee handbook...""*), making it much easier to fact-check.
+
+4. **Cost-Effective:** 
+   Retraining or fine-tuning an AI model from scratch is astronomically expensive. RAG acts as a workaround—you keep the off-the-shelf model and simply give it a searchable library to reference.
+
+### **In short:** 
+RAG bridges the gap between the creative writing ability of AI and the factual accuracy of a search engine.",,2048,prompts:/eduassist_academic_qa/1,False,False,476,8.1e-06,0.00119,0.0011981000000000001,2026-11-02,USD,
+Q1,What is the difference between supervised and unsupervised learning?,v2,gemini-3.5-flash-lite,2026-11-01T21:02:57.292586+00:00,2026-11-01T21:02:59.118360+00:00,1.8258,success,STOP,45,264,0,309,"Here is the difference between supervised and unsupervised learning, broken down simply:
+
+*   **Supervised Learning** is like learning with a teacher. You provide the computer with **labeled data**—meaning the data comes with the correct answers. The goal is to learn the rule that connects the input to the output. 
+    *   *Example:* Teaching an algorithm to recognize emails as ""Spam"" or ""Not Spam"" by showing it thousands of emails that have already been tagged by humans.
+    *   *Common tasks:* Classification (categories) and Regression (numbers/prediction).
+
+*   **Unsupervised Learning** is like learning on your own without a teacher. You provide the computer with **unlabeled data**—data with no correct answers or hints. The goal is for the computer to explore the data and find hidden patterns, structures, or groupings on its own.
+    *   *Example:* Grouping online shoppers into different segments based on their browsing habits, without knowing ahead of time what those groups should be.
+    *   *Common tasks:* Clustering (grouping) and Association (finding rules/connections).
+
+**In short:** Supervised learning uses **labeled** data to predict known outcomes, while unsupervised learning uses **unlabeled** data to discover hidden patterns.",,2048,prompts:/eduassist_academic_qa/2,False,False,264,1.35e-05,0.00066,0.0006734999999999999,2026-11-02,USD,
+Q2,Explain overfitting in machine learning and one way to reduce it.,v2,gemini-3.5-flash-lite,2026-11-01T21:02:59.146670+00:00,2026-11-01T21:03:00.317923+00:00,1.1713,success,STOP,47,170,0,217,"**Overfitting** happens when a machine learning model learns the training data *too well*. Instead of learning the general underlying rules, it memorizes the specific details, including the noise and random fluctuations in that specific dataset. As a result, the model performs wonderfully on the training data, but poorly when it is asked to make predictions on new, unseen data. 
+
+**One way to reduce overfitting is through Regularization (specifically, L2 Regularization, or ""Ridge"").** 
+
+Regularization works by adding a small penalty to the model for being too complex (for example, by keeping the model's coefficients small). This discourages the model from relying too heavily on any single feature, forcing it to stay simpler and focus on the broader trends rather than memorizing the training data. This improves its ability to generalize to new data.",,2048,prompts:/eduassist_academic_qa/2,False,False,170,1.4099999999999999e-05,0.000425,0.0004391,2026-11-02,USD,
+Q3,"What is gradient descent, and why is it used to train neural networks?",v2,gemini-3.5-flash-lite,2026-11-01T21:03:00.335592+00:00,2026-11-01T21:03:02.198432+00:00,1.8629,success,STOP,50,348,0,398,"**What is Gradient Descent?**
+
+Gradient descent is an iterative optimization algorithm used to find the minimum of a function. Imagine you are standing on a foggy mountain and want to walk down to the lowest valley. Since you can't see the whole landscape, you feel the slope of the ground right beneath your feet and take a step in the direction that goes down most steeply. By repeating this process—checking the slope and taking a step downhill—you will eventually reach the bottom. 
+
+In machine learning, the ""mountain"" is a **cost function** (or loss function) that measures how wrong a neural network's predictions are. The ""bottom of the valley"" represents the set of model parameters (weights and biases) that produce the lowest possible error, meaning the network is performing as accurately as possible.
+
+---
+
+**Why is it used to train neural networks?**
+
+Neural networks learn by adjusting their internal parameters to make better predictions. Gradient descent is the primary tool used to make these adjustments for two main reasons:
+
+1. **Handling Complexity:** A neural network has thousands or even millions of interconnected parameters. Calculating the exact best settings all at once is mathematically impossible. Gradient descent solves this by making small, step-by-step improvements.
+2. **Automated Learning:** The ""gradient"" tells the algorithm two things: *which direction* to change the parameters, and *how large* the step should be (larger errors lead to bigger steps; as the model gets closer to the solution, the steps get smaller). 
+
+In short, gradient descent is the engine of learning for neural networks; it provides a reliable, mathematical way for the model to correct its mistakes and improve over time.",,2048,prompts:/eduassist_academic_qa/2,False,False,348,1.5e-05,0.00087,0.000885,2026-11-02,USD,
+Q4,What is the difference between precision and recall in classification?,v2,gemini-3.5-flash-lite,2026-11-01T21:03:02.204639+00:00,2026-11-01T21:03:03.903640+00:00,1.699,success,STOP,46,339,0,385,"In classification models, **precision** and **recall** are two essential metrics used to evaluate how well a model performs, especially when dealing with imbalanced datasets (where one class is much more common than the other). 
+
+To understand the difference, it helps to look at them through the lens of positive predictions:
+
+*   **Precision** answers the question: *""Out of all the things the model predicted as positive, how many were actually correct?""*
+    *   **Focus:** Quality of the predictions. 
+    *   **High precision means:** When the model says ""yes,"" it is almost certainly right. It minimizes *false positives* (crying wolf).
+    *   *Example:* A spam filter with high precision ensures that important emails are rarely sent to the spam folder.
+
+*   **Recall** (also known as Sensitivity) answers the question: *""Out of all the actual positive things in the data, how many did the model manage to find?""*
+    *   **Focus:** Quantity or completeness.
+    *   **High recall means:** The model successfully finds almost all the positive cases. It minimizes *false negatives* (missing the target).
+    *   *Example:* A cancer-screening test with high recall ensures that very few sick patients are mistakenly told they are healthy.
+
+### Summary
+*   **Precision** = *Exactness* (How trustworthy are the positive results?)
+*   **Recall** = *Completeness* (Did we catch all the positive cases?)
+
+Usually, there is a trade-off between the two: making a model more precise often lowers its recall, and vice versa.",,2048,prompts:/eduassist_academic_qa/2,False,False,339,1.3799999999999998e-05,0.0008475,0.0008613,2026-11-02,USD,
+Q5,"What is retrieval-augmented generation (RAG), and why is it useful?",v2,gemini-3.5-flash-lite,2026-11-01T21:03:03.907894+00:00,2026-11-01T21:03:06.256709+00:00,2.3488,success,STOP,51,339,0,390,"**What is RAG?**
+
+Retrieval-Augmented Generation (RAG) is a technique used in artificial intelligence to improve the answers generated by Large Language Models (LLMs). 
+
+Normally, an LLM relies solely on the information it was trained on. RAG adds an extra step: when you ask a question, the system first **retrieves** relevant documents or data from an external source (like a database, a company’s internal files, or the internet). It then feeds that specific information to the LLM, which uses it to **generate** an accurate, up-to-date response. 
+
+Think of it like taking an open-book exam: instead of relying only on its memory, the AI is given the textbook to look up the exact answer before writing it down.
+
+---
+
+**Why is it useful?**
+
+RAG solves three major weaknesses of standard AI models:
+
+1. **Reduces ""Hallucinations"":** LLMs sometimes make up false information because they try to predict an answer even when they don't know it. By grounding the AI in real, retrieved documents, RAG makes answers much more factual and reliable.
+2. **Access to Private or New Data:** LLMs cannot automatically see your private documents, and their training data has a cutoff date. RAG allows you to connect an AI to live databases, recent news, or internal company files without having to retrain the expensive model.
+3. **Provides Citations:** Because the AI retrieves specific source documents to generate the answer, it can often show you *where* it found the information, making it easier to verify.",,2048,prompts:/eduassist_academic_qa/2,False,False,339,1.53e-05,0.0008475,0.0008627999999999999,2026-11-02,USD,
+Q1,What is the difference between supervised and unsupervised learning?,v3,gemini-3.5-flash-lite,2026-11-01T21:09:38.096289+00:00,2026-11-01T21:09:39.681256+00:00,1.585,success,STOP,86,128,0,214,"{
+  ""answer"": ""Supervised learning uses labeled data and algorithms to train models to predict outcomes or classify information accurately. In contrast, unsupervised learning uses unlabeled data to allow algorithms to discover hidden patterns, structures, or groupings without human intervention."",
+  ""confidence"": ""high"",
+  ""key_points"": [
+    ""Supervised learning requires labeled data; unsupervised learning uses unlabeled data."",
+    ""Supervised learning focuses on prediction and classification; unsupervised learning focuses on pattern recognition and clustering."",
+    ""Supervised models require explicit target outputs during training; unsupervised models explore the data autonomously.""
+  ]
+}",,2048,prompts:/eduassist_academic_qa/3,True,True,128,2.58e-05,0.00032,0.0003458,2026-11-02,USD,
+Q2,Explain overfitting in machine learning and one way to reduce it.,v3,gemini-3.5-flash-lite,2026-11-01T21:09:39.697788+00:00,2026-11-01T21:09:40.809937+00:00,1.1122,success,STOP,88,138,0,226,"{
+  ""answer"": ""Overfitting occurs when a machine learning model learns the training data too well, capturing its noise and random fluctuations rather than the underlying pattern, which leads to poor generalization on unseen data. One way to reduce it is through regularization (such as L1 or L2 regularization), which adds a penalty to the loss function for large model weights."",
+  ""confidence"": ""high"",
+  ""key_points"": [
+    ""Learns training noise and details instead of general patterns"",
+    ""Results in poor performance on new, unseen data"",
+    ""Can be reduced using regularization techniques like L1 or L2""
+  ]
+}",,2048,prompts:/eduassist_academic_qa/3,True,True,138,2.6399999999999998e-05,0.000345,0.0003714,2026-11-02,USD,
+Q3,"What is gradient descent, and why is it used to train neural networks?",v3,gemini-3.5-flash-lite,2026-11-01T21:09:40.813881+00:00,2026-11-01T21:09:42.064930+00:00,1.2511,success,STOP,91,137,0,228,"{
+  ""answer"": ""Gradient descent is an iterative optimization algorithm used to minimize a loss function by moving in the direction of the steepest descent, defined by the negative gradient. It is used in training neural networks to systematically adjust the network's weights and biases, thereby reducing prediction errors and improving the model's accuracy over time."",
+  ""confidence"": ""high"",
+  ""key_points"": [
+    ""Iterative optimization algorithm"",
+    ""Minimizes a loss or cost function"",
+    ""Uses the gradient to determine the direction of steepest descent"",
+    ""Adjusts neural network weights and biases to reduce error""
+  ]
+}",,2048,prompts:/eduassist_academic_qa/3,True,True,137,2.73e-05,0.0003425,0.0003698,2026-11-02,USD,
+Q4,What is the difference between precision and recall in classification?,v3,gemini-3.5-flash-lite,2026-11-01T21:09:42.070043+00:00,2026-11-01T21:09:43.335487+00:00,1.2655,success,STOP,87,174,0,261,"{
+  ""answer"": ""Precision measures the accuracy of positive predictions, specifically the ratio of true positives to all predicted positives, answering 'how many of the selected items are relevant?'. Recall, also known as sensitivity, measures the ability to find all actual positive instances, calculated as the ratio of true positives to all actual positives, answering 'how many of the relevant items are selected?'."",
+  ""confidence"": ""high"",
+  ""key_points"": [
+    ""Precision focuses on the quality of positive predictions (True Positives / (True Positives + False Positives))."",
+    ""Recall focuses on the quantity of actual positives detected (True Positives / (True Positives + False Negatives))."",
+    ""There is typically a trade-off between precision and recall depending on the classification threshold.""
+  ]
+}",,2048,prompts:/eduassist_academic_qa/3,True,True,174,2.6099999999999997e-05,0.000435,0.0004611,2026-11-02,USD,
+Q5,"What is retrieval-augmented generation (RAG), and why is it useful?",v3,gemini-3.5-flash-lite,2026-11-01T21:09:43.341093+00:00,2026-11-01T21:09:44.518877+00:00,1.1778,success,STOP,92,136,0,228,"{
+  ""answer"": ""Retrieval-augmented generation (RAG) is a technique that enhances large language models by retrieving relevant information from an external knowledge base before generating a response. It is useful because it reduces hallucinations, provides up-to-date information, and grounds the model's outputs in verifiable sources without requiring full retraining."",
+  ""confidence"": ""high"",
+  ""key_points"": [
+    ""Combines information retrieval with text generation"",
+    ""Queries external knowledge bases for context"",
+    ""Reduces hallucinations and factual errors"",
+    ""Allows access to private or up-to-date data""
+  ]
+}",,2048,prompts:/eduassist_academic_qa/3,True,True,136,2.7599999999999997e-05,0.00034,0.00036760000000000004,2026-11-02,USD,
